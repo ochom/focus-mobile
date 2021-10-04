@@ -6,8 +6,7 @@ import (
 )
 
 const (
-	usage = `
-    Invalid input. see usage below:
+	usage = `Invalid input. see usage below:
     usage: ./app action "argument"
     actions: an action can either be 'search' or 'describe'
     example: ./app search "text to search"`
@@ -15,12 +14,12 @@ const (
 
 func main() {
 	arguments := os.Args
-	if len(arguments) != 2 {
+	if len(arguments) != 3 {
 		fmt.Println(usage)
 		return
 	}
-	action := arguments[0]
-	param := arguments[1]
+	action := arguments[1]
+	param := arguments[2]
 	switch action {
 	case "search":
 		search(param)
@@ -33,9 +32,9 @@ func main() {
 }
 
 func search(param string) {
-	fmt.Println("Searching ...")
+	fmt.Printf("Searching ...%v\n", param)
 }
 
 func describe(param string) {
-	fmt.Println("Describing ...")
+	fmt.Printf("Describing ...%v\n", param)
 }
