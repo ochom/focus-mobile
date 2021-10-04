@@ -9,13 +9,17 @@ import (
 )
 
 func main() {
+
 	arguments := os.Args
+
 	if len(arguments) != 3 {
 		fmt.Println(domain.USAGE)
 		return
 	}
+
 	action := arguments[1]
 	param := arguments[2]
+
 	switch action {
 	case "search":
 		helpers.Search(param)
