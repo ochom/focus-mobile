@@ -5,7 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/ochom/focus/domain"
 )
@@ -51,4 +53,14 @@ func MakeHttpRequest(params domain.HttpRequestParam) ([]byte, error) {
 	}
 
 	return body, nil
+}
+
+func GetEnv(envName string) string {
+	env := os.Getenv(envName)
+	if env == "" {
+		log.Fatalf("environment variables: %v not declared", envName)
+		os.Exit(1)
+	}
+
+	return env
 }
